@@ -21,12 +21,24 @@ class Arr {
 
     public function set($key, $val) {
         isset($this->array[ $key ]) ? ($this->array[ $key ] = $val) : FALSE;
+
+        return $this->array;
+    }
+
+    public function remove($key) {
+        if (!isset($this->array[ $key ])) {
+            return FALSE;
+        }
+        unset($this->array[ $key ]);
+        $this->length -= 1;
+
         return $this->array;
     }
 
     /**
      * insert
      * Move the array back and forth from the last element
+     *
      * @param $key
      * @param $val
      * @return array
@@ -35,12 +47,12 @@ class Arr {
         $this->offset($key);
         $this->array[ $key ] = $val;
         //do not forget +1
-        $this->length+=1;
+        $this->length += 1;
+
         return $this->array;
     }
 
-    private function offset($index)
-    {
+    private function offset($index) {
         for ($i = $this->length - 1; $i >= $index; $i--) {
             $this->array[ $i + 1 ] = $this->array[ $i ];
         }
@@ -48,7 +60,7 @@ class Arr {
 }
 
 //test
-$array = new Arr([1,2,3,4,5]);
+$array = new Arr([1, 2, 3, 4, 5]);
 // random get
 echo $array->get(0);
 // update
