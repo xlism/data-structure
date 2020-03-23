@@ -13,7 +13,7 @@ class ListStack
 
     public function __construct()
     {
-        $this->list = new myList();
+        $this->list = new LinkedList();
     }
 
     public function push($data)
