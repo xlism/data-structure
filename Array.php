@@ -6,30 +6,35 @@
  * Time: 09:42
  */
 
-class Arr {
+class Arr
+{
     private $array = [];
     private $length = 0;
 
-    public function __construct(Array $array) {
+    public function __construct(Array $array)
+    {
         $this->array = $array;
         $this->length = count($this->array);
     }
 
-    public function get($key) {
-        return isset($this->array[ $key ]) ? $this->array[ $key ] : NULL;
+    public function get($key)
+    {
+        return isset($this->array[$key]) ? $this->array[$key] : null;
     }
 
-    public function set($key, $val) {
-        isset($this->array[ $key ]) ? ($this->array[ $key ] = $val) : FALSE;
+    public function set($key, $val)
+    {
+        isset($this->array[$key]) ? ($this->array[$key] = $val) : false;
 
         return $this->array;
     }
 
-    public function remove($key) {
-        if (!isset($this->array[ $key ])) {
-            return FALSE;
+    public function remove($key)
+    {
+        if (!isset($this->array[$key])) {
+            return false;
         }
-        unset($this->array[ $key ]);
+        unset($this->array[$key]);
         $this->length -= 1;
 
         return $this->array;
@@ -43,18 +48,20 @@ class Arr {
      * @param $val
      * @return array
      */
-    public function insert($key, $val) {
+    public function insert($key, $val)
+    {
         $this->offset($key);
-        $this->array[ $key ] = $val;
+        $this->array[$key] = $val;
         //do not forget +1
         $this->length += 1;
 
         return $this->array;
     }
 
-    private function offset($index) {
+    private function offset($index)
+    {
         for ($i = $this->length - 1; $i >= $index; $i--) {
-            $this->array[ $i + 1 ] = $this->array[ $i ];
+            $this->array[$i + 1] = $this->array[$i];
         }
     }
 }

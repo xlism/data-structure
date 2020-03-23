@@ -6,30 +6,36 @@
  * Date: 2020-03-23
  * Time: 10:53
  */
-class Node {
+class Node
+{
     private $data;
     private $next;
 
-    public function __construct($data) {
+    public function __construct($data)
+    {
         $this->data = $data;
     }
 
-    public function __get($name) {
+    public function __get($name)
+    {
         return $this->$name;
     }
 
-    public function __set($name, $value) {
+    public function __set($name, $value)
+    {
         $this->$name = $value;
     }
 }
 
-class myList {
+class myList
+{
     private $head;
     private $tail;
     private $length;
 
-    public function __construct() {
-        $this->head = new Node(NULL);
+    public function __construct()
+    {
+        $this->head = new Node(null);
     }
 
     /**
@@ -38,9 +44,10 @@ class myList {
      * @param $index
      * @return bool|Node
      */
-    public function get($index) {
+    public function get($index)
+    {
         if ($index < 0 || $index >= $this->length) {
-            return FALSE;
+            return false;
         }
         $temp = $this->head;
         for ($i = 0; $i < $index; $i++) {
@@ -50,59 +57,71 @@ class myList {
         return $temp;
     }
 
-    public function insert(Node $node, $index) {
+    public function insert(Node $node, $index)
+    {
         if ($index < 0 || $index > $this->length) {
-            return FALSE;
+            return false;
         }
         if ($this->length == 0) {
             $this->head = $node;
             $this->tail = $node;
-        } else if ($index == 0) {
-            $node->next = $this->head;
-            $this->head = $node;
-        } else if ($index > 0 && $index < $this->length) {
-            $prevNode = $this->get($index - 1);
-            $node->next = $prevNode->next;
-            $prevNode->next = $node;
-        } else if ($index == $this->length) {
-            $this->tail->next = $node;
-            $this->tail = $node;
+        } else {
+            if ($index == 0) {
+                $node->next = $this->head;
+                $this->head = $node;
+            } else {
+                if ($index > 0 && $index < $this->length) {
+                    $prevNode = $this->get($index - 1);
+                    $node->next = $prevNode->next;
+                    $prevNode->next = $node;
+                } else {
+                    if ($index == $this->length) {
+                        $this->tail->next = $node;
+                        $this->tail = $node;
+                    }
+                }
+            }
         }
         $this->length += 1;
 
         return $this;
     }
 
-    public function remove($index) {
+    public function remove($index)
+    {
         if ($index < 0 || $this->length == 0 || $index >= $this->length) {
-            return FALSE;
+            return false;
         }
         if ($index == 0) {
             $this->head = $this->head->next;
-        } else if ($index == $this->length - 1) {
-            $prevNode = $this->get($index - 1);
-            $prevNode->next = NULL;
-            $this->tail = $prevNode;
         } else {
-            $prevNode = $this->get($index - 1);
-            $node = $this->get($index);
-            $prevNode->next = $node->next;
+            if ($index == $this->length - 1) {
+                $prevNode = $this->get($index - 1);
+                $prevNode->next = null;
+                $this->tail = $prevNode;
+            } else {
+                $prevNode = $this->get($index - 1);
+                $node = $this->get($index);
+                $prevNode->next = $node->next;
+            }
         }
         $this->length -= 1;
 
         return $this;
     }
 
-    public function output() {
+    public function output()
+    {
         $temp = $this->head;
-        while ($temp != NULL) {
+        while ($temp != null) {
             echo $temp->data;
             $temp = $temp->next;
         }
         echo '<br/>';
     }
 
-    public function getLength() {
+    public function getLength()
+    {
         return $this->length;
     }
 }
