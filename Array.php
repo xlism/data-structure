@@ -64,6 +64,16 @@ class Arr
             $this->array[$i + 1] = $this->array[$i];
         }
     }
+
+    public function getLength()
+    {
+        return $this->getLength();
+    }
+
+    public function output()
+    {
+        var_dump($this->array);
+    }
 }
 
 //test
