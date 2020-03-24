@@ -222,47 +222,47 @@ class LinkedList
 }
 
 //test
-$list = new LinkedList();
+//$list = new LinkedList();
 
-$list->insert(new Node(1,1), 0);
-$list->insert(new Node(2,2), $list->getLength());
-$list->insert(new Node(3,3), $list->getLength());
-$list->insert(new Node(4,4), $list->getLength());
-$list->output();
+//$list->insert(new Node(1,1), 0);
+//$list->insert(new Node(2,2), $list->getLength());
+//$list->insert(new Node(3,3), $list->getLength());
+//$list->insert(new Node(4,4), $list->getLength());
+//$list->output();
 
 //insert to middle
-$list->insert(new Node(5,5), rand(1, $list->getLength() - 1));
-$list->output();
+//$list->insert(new Node(5,5), rand(1, $list->getLength() - 1));
+//$list->output();
 
 //insert to head
-$list->insert(new Node(6,6), 0);
-$list->output();
+//$list->insert(new Node(6,6), 0);
+//$list->output();
 
 //insert to tail
-$list->insert(new Node(7,7), $list->getLength());
-$list->output();
+//$list->insert(new Node(7,7), $list->getLength());
+//$list->output();
 
 //remove the head node
-$list->remove(0);
-$list->output();
+//$list->remove(0);
+//$list->output();
 
 //remove the middle node
-$list->remove(rand(1, $list->getLength() - 1));
-$list->output();
+//$list->remove(rand(1, $list->getLength() - 1));
+//$list->output();
 
 //remove the tail node
-$list->remove($list->getLength() - 1);
-$list->output();
+//$list->remove($list->getLength() - 1);
+//$list->output();
 
 //get head node
-var_dump($list->get(0));
+//var_dump($list->get(0));
 //get tail node
-var_dump($list->get($list->getLength() - 1));
+//var_dump($list->get($list->getLength() - 1));
 //get middle node
-var_dump($list->get(rand(1, $list->getLength() - 1)));
+//var_dump($list->get(rand(1, $list->getLength() - 1)));
 
 //exception test
-var_dump($list->get(-1));
-var_dump($list->get($list->getLength()));
-var_dump($list->get($list->getLength() + 1));
+//var_dump($list->get(-1));
+//var_dump($list->get($list->getLength()));
+//var_dump($list->get($list->getLength() + 1));
 //...
